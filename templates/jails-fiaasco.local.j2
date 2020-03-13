@@ -1,0 +1,14 @@
+# {{ ansible_managed }}
+[vsftpd]
+enabled = true
+{% if ansible_os_family == 'Debian' %}
+logpath = %(syslog_authpriv)s
+{% else %}
+logpath = /var/log/auth.log
+{% endif %}
+port     = ftp,ftp-data,ftps,ftps-data
+
+[postfix]
+enabled = true
+port     = smtp,465,submission
+logpath  = /var/log/mail.log

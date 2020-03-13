@@ -1,0 +1,7 @@
+# {{ ansible_managed }}
+[DEFAULT]
+
+bantime  = {{ fail2ban_bantime }}
+maxretry = {{ fail2ban_maxretry }}
+# "ignoreip" can be an IP address, a CIDR mask or a DNS host
+ignoreip = 127.0.0.1/8 {{ fail2ban_ignoreip|join(' ') }}

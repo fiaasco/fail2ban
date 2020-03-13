@@ -1,0 +1,10 @@
+---
+- name: enable required repos
+  yum:
+    name:
+      - epel-release
+
+- name: install fail2ban
+  yum:
+    name: fail2ban
+    state: present

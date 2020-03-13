@@ -1,0 +1,18 @@
+---
+# description: hosts or subnets to whitelist for fail2ban checks
+#              can be an IP address, a CIDR mask or a DNS host
+# type: list
+# example:
+# fail2ban_ignoreip:
+#   - 10.10.10.0/24
+#   - 127.1.2.3
+#   - your.fqdn
+fail2ban_ignoreip: []
+
+# description: bantime in seconds
+# type: int
+fail2ban_bantime: 7200
+
+# description: allowed retries before ban
+# type: int
+fail2ban_maxretry: 3

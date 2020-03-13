@@ -1,0 +1,21 @@
+---
+- name: Install fail2ban
+  include_tasks: "{{ ansible_os_family }}.yml"
+
+- name: ensure the service is running
+  service:
+    name: fail2ban
+    state: started
+    enabled: true
+
+- name: put /etc/fail2ban/jail.d template(s)
+  template:
+    src: "{{ item }}.j2"
+    dest: "/etc/fail2ban/jail.d/{{ item }}"
+    owner: root
+    group: root
+    mode: "0644"
+  with_items:
+    - defaults-fiaasco.local
+    - jails-fiaasco.local
+  notify: restart fail2ban

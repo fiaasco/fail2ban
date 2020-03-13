@@ -8,8 +8,12 @@ scenario:
 lint:
   name: yamllint
 platforms:
-  - name: fail2ban-centos
+  - name: fail2ban-centos7
     image: centos:7
+    command: /sbin/init
+    privileged: true
+  - name: fail2ban-centos8
+    image: centos:8
     command: /sbin/init
     privileged: true
 provisioner:

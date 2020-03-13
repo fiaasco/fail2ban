@@ -17,6 +17,7 @@ galaxy_info:
         - 16
         - 18
     - name: EL
+      version:
         - 7
         - 8
 

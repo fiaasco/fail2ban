@@ -2,7 +2,7 @@
 
 # Ansible Role: fail2ban
 
-A brief description of the role goes here.
+This role install fail2ban on Debian, Ubuntu and CentOS.
 
 ## Requirements
 

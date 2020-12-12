@@ -5,15 +5,18 @@ driver:
   name: docker
 scenario:
   name: ubuntu
-lint:
-  name: yamllint
+lint: |
+  set -e
+  yamllint .
+  ansible-lint
+  flake8
 platforms:
   - name: fail2ban-ubuntu-bionic
     image: ubuntu:bionic
     command: /lib/systemd/systemd
     privileged: true
-  - name: fail2ban-ubuntu-xenial
-    image: ubuntu:xenial
+  - name: fail2ban-ubuntu-focal
+    image: ubuntu:focal
     command: /lib/systemd/systemd
     privileged: true
 provisioner:

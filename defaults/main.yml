@@ -7,7 +7,9 @@
 #   - 10.10.10.0/24
 #   - 127.1.2.3
 #   - your.fqdn
-fail2ban_ignoreip: []
+fail2ban_ignoreip:
+  - "127.0.0.1/8"
+  - "::1"
 
 # description: bantime in seconds
 # type: int

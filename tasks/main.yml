@@ -8,6 +8,15 @@
     state: started
     enabled: true
 
+- name: put default configuration file (avoid issues when upgrading old systems)
+  template:
+    src: jail.conf.j2
+    dest: "/etc/fail2ban/jail.conf"
+    owner: root
+    group: root
+    mode: "0644"
+  notify: restart fail2ban
+
 - name: put /etc/fail2ban/jail.d template(s)
   template:
     src: "{{ item }}.j2"
@@ -18,5 +27,4 @@
   with_items:
     - defaults-fiaasco.local
     - jails-fiaasco.local
-    - jail.conf
   notify: restart fail2ban

@@ -1,5 +1,7 @@
 ---
 galaxy_info:
+  rolename: fail2ban
+  namespace: fiaasco
   author: Luc Stroobant
   description: Ansible role to install fail2ban
 

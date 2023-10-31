@@ -4,26 +4,19 @@ dependency:
 driver:
   name: docker
 scenario:
-  name: default
+  name: debian9
 platforms:
-  - name: fail2ban-debian-12
-    image: debian:12
-    command: /lib/systemd/systemd
-    privileged: true
-  - name: fail2ban-debian-11
-    image: debian:11
-    command: /lib/systemd/systemd
-    privileged: true
-  - name: fail2ban-debian-10
-    image: debian:10
+  - name: fail2ban-debian-9
+    image: debian:9
     command: /lib/systemd/systemd
     privileged: true
 provisioner:
   name: ansible
   config_options:
     defaults:
-      callbacks_enabled: profile_tasks
+      callback_whitelist: profile_tasks
       jinja2_extensions: jinja2.ext.do
+      gather_timeout: 30
       timeout: 30
     ssh_connection:
       pipelining: true

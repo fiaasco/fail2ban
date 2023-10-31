@@ -4,20 +4,11 @@ dependency:
 driver:
   name: docker
 scenario:
-  name: centos
-lint: |
-  set -e
-  yamllint .
-  ansible-lint
-  flake8
+  name: debian9
 platforms:
-  - name: fail2ban-centos7
-    image: centos:7
-    command: /sbin/init
-    privileged: true
-  - name: fail2ban-centos8
-    image: centos:8
-    command: /sbin/init
+  - name: fail2ban-debian-9
+    image: debian:9
+    command: /lib/systemd/systemd
     privileged: true
 provisioner:
   name: ansible
@@ -29,8 +20,6 @@ provisioner:
       timeout: 30
     ssh_connection:
       pipelining: true
-  lint:
-    name: ansible-lint
   inventory:
     group_vars:
       all:
@@ -39,5 +28,3 @@ provisioner:
           - 1.2.3.4/32
 verifier:
   name: testinfra
-  lint:
-    name: flake8
